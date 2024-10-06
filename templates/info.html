@@ -55,31 +55,33 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Select an Option
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" onclick="setup()">
           <li id = "drop1" onclick="validate('humans')"><a class="dropdown-item" >Humans</a></li>
           <li id = "drop2" onclick="validate('aliens')"><a class="dropdown-item">Aliens</a></li>
           <li id = "drop3" onclick="validate('toys')"><a class="dropdown-item">Toys</a></li>
         </ul>
       </div>
       <script>
+        function setup(){
+          const toastTrigger = document.getElementById('drop1')
+          const toastTrigger2 = document.getElementById('drop2')
+          const toastTrigger3 = document.getElementById('drop3')
+          const toastLiveExample = document.getElementById('liveToast')
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger.addEventListener('click', () => {
+              toastBootstrap.show()
+          })
+          const toastBootstrap2 = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger2.addEventListener('click', () => {
+              toastBootstrap.show()
+          })
+          const toastBootstrap3 = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+          toastTrigger3.addEventListener('click', () => {
+              toastBootstrap.show()
+          })
+        }
         function validate(s){
             const p = document.getElementById("question1");
-            const toastTrigger = document.getElementById('drop1')
-            const toastTrigger2 = document.getElementById('drop2')
-            const toastTrigger3 = document.getElementById('drop3')
-            const toastLiveExample = document.getElementById('liveToast')
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastTrigger.addEventListener('click', () => {
-                toastBootstrap.show()
-            })
-            const toastBootstrap2 = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastTrigger2.addEventListener('click', () => {
-                toastBootstrap.show()
-            })
-            const toastBootstrap3 = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastTrigger3.addEventListener('click', () => {
-                toastBootstrap.show()
-            })
             if (s == "humans"){
                 p.textContent="Correct!";
             }
