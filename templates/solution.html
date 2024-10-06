@@ -63,14 +63,24 @@
           <source src="static/videos/TedTalk.mp4" type="video/mp4">
         </video></center><br><br>
         <p style="font-size: 20px;text-align:center; color:rgb(0, 0, 0)">
-          To better help you understand the solution to this problem, use the simulation below:<br>
+          To better help you understand overpopulation factors and possible solutions, use the simulation below.<br>
+          Try playing around with the C and k values and observe how the graph changes:<br>
         </p>
-        <center><div id="calculator" style="width: 600px; height: 400px;"></div></center>
+        <center><div id="calculator" style="width: 720px; height: 480px;"></div></center><br><br>
         <script>
+          function setImageSrc(data) {
+            var elt = document.getElementById('calculator');;
+            elt.src = data;
+          }
           var elt = document.getElementById('calculator');
           var calculator = Desmos.GraphingCalculator(elt);
-          calculator.xAxisLabel("Population (in millions)");
-          calculator.lockViewport(true);
+          calculator.updateSettings({ lockViewport: true });
+          calculator.updateSettings({ min: "0", max: "1", step: "1" })
+          calculator.updateSettings({xAxisLabel: 'Population (in millions)'});
+          calculator.updateSettings({yAxisLabel: 'Infrastructure Quality Index'});
+          calculator.setExpression({ id: 'logistic', latex: 'f(t)={10}/{(1+Ce^{-kt})}', color: Desmos.Colors.BLUE });
+          calculator.setExpression({ id: 'c', latex: 'C=10' });
+          calculator.setExpression({ id: 'k', latex: 'k=0.6' })
         </script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
